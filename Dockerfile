@@ -1,13 +1,13 @@
 FROM janusgraph/janusgraph:latest
 
-COPY gremlin-server.yaml /opt/janusgraph/conf/gremlin-server/gremlin-server.yaml
+#COPY gremlin-server.yaml /opt/janusgraph/conf/gremlin-server/gremlin-server.yaml
 
 WORKDIR /opt/janusgraph
 RUN apt update -y \
 &&  apt install ssh -y \
-&&  service ssh start \
 &&  /bin/echo janusgraph:janusgraph |chpasswd
 
 EXPOSE 8182 22
 ENTRYPOINT ["docker-entrypoint.sh"]
-CMD ["janusgraph"]
+#CMD ["janusgraph"]
+CMD ["sh","-c","janusgraph && service ssh start"]
