@@ -1,5 +1,7 @@
 FROM janusgraph/janusgraph:latest
 
+COPY gremlin-server.yaml /opt/janusgraph/conf/gremlin-server/gremlin-server.yaml
+
 WORKDIR /opt/janusgraph
 RUN apt update -y \
 &&  apt install ssh -y \
