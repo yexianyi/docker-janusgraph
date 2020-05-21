@@ -1,6 +1,7 @@
 FROM janusgraph/janusgraph:latest
 
 #COPY gremlin-server.yaml /opt/janusgraph/conf/gremlin-server/gremlin-server.yaml
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 
 WORKDIR /opt/janusgraph
 RUN apt update -y \
