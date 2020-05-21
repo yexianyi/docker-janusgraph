@@ -9,5 +9,4 @@ RUN apt update -y \
 
 EXPOSE 8182 22
 ENTRYPOINT ["docker-entrypoint.sh"]
-#CMD ["janusgraph"]
-CMD ["sh","-c","janusgraph && service ssh start"]
+CMD ["janusgraph"]
