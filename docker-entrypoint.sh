@@ -21,6 +21,8 @@
 JANUS_PROPS="${JANUS_CONFIG_DIR}/janusgraph.properties"
 GREMLIN_YAML="${JANUS_CONFIG_DIR}/gremlin-server.yaml"
 
+service ssh start
+
 # running as root; step down to run as janusgraph user
 if [ "$1" == 'janusgraph' ] && [ "$(id -u)" == "0" ]; then
   mkdir -p ${JANUS_DATA_DIR} ${JANUS_CONFIG_DIR}
@@ -87,7 +89,5 @@ fi
 if ! [ -z "${GREMLIN_REMOTE_HOSTS:-}" ]; then
   sed -i "s/hosts\s*:.*/hosts: [$GREMLIN_REMOTE_HOSTS]/" ${JANUS_HOME}/conf/remote.yaml
 fi
-
-service ssh start
 
 exec "$@"
