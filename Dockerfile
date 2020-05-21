@@ -4,10 +4,10 @@ FROM janusgraph/janusgraph:latest
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 
 WORKDIR /opt/janusgraph
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 RUN apt update -y \
 &&  apt install ssh -y \
-&&  /bin/echo janusgraph:janusgraph |chpasswd \
-&&  chmod +x /usr/local/bin/docker-entrypoint.sh
+&&  /bin/echo janusgraph:janusgraph |chpasswd
 
 EXPOSE 8182 22
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
