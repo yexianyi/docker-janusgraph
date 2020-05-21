@@ -10,5 +10,5 @@ RUN apt update -y \
 &&  /bin/echo janusgraph:janusgraph |chpasswd
 
 EXPOSE 8182 22
-ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
+ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["janusgraph"]
